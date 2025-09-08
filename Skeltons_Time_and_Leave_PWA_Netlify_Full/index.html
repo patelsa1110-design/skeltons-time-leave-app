@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skeltons Chemists — Time & Leave</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0b8a63" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <img src="assets/logo.png" alt="Skeltons Chemists" class="logo" />
+    <h1>Skeltons Chemists</h1>
+    <h2>Time Booking & Holiday Requests</h2>
+  </header>
+  <main>
+    <section class="card">
+      <h3>Time Booking</h3>
+      <form id="timeForm">
+        <div class="row">
+          <label for="t_name">Name</label>
+          <input type="text" id="t_name" required placeholder="Your full name" autocomplete="name" />
+        </div>
+        <div class="row">
+          <label for="t_date">Date</label>
+          <input type="date" id="t_date" required />
+        </div>
+        <div class="row">
+          <label for="t_hours">Hours worked</label>
+          <input type="number" id="t_hours" step="0.25" min="0" max="24" required placeholder="e.g., 7.5" />
+        </div>
+        <div class="row">
+          <label for="t_role">Role (optional)</label>
+          <input type="text" id="t_role" placeholder="e.g., Pharmacist, Dispenser" />
+        </div>
+        <div class="row">
+          <label for="t_notes">Notes (optional)</label>
+          <textarea id="t_notes" rows="2" placeholder="Anything to add?"></textarea>
+        </div>
+        <button type="submit" class="primary">Submit Time</button>
+        <p class="help">Submissions are emailed and queued if offline.</p>
+      </form>
+    </section>
+    <section class="card">
+      <h3>Holiday Request</h3>
+      <form id="leaveForm">
+        <div class="row">
+          <label for="l_name">Name</label>
+          <input type="text" id="l_name" required placeholder="Your full name" />
+        </div>
+        <div class="row two">
+          <div>
+            <label for="l_start">Start date</label>
+            <input type="date" id="l_start" required />
+          </div>
+          <div>
+            <label for="l_end">End date</label>
+            <input type="date" id="l_end" required />
+          </div>
+        </div>
+        <div class="row">
+          <label for="l_type">Type</label>
+          <select id="l_type" required>
+            <option value="Annual Leave">Annual Leave</option>
+            <option value="Unpaid Leave">Unpaid Leave</option>
+            <option value="Sick Leave">Sick Leave</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="l_notes">Notes (optional)</label>
+          <textarea id="l_notes" rows="2" placeholder="Reason or details"></textarea>
+        </div>
+        <button type="submit" class="primary">Request Holiday</button>
+        <p class="help">Requests are emailed and queued if offline.</p>
+      </form>
+    </section>
+    <section class="card" id="queueCard" hidden>
+      <h3>Pending (Offline) Submissions</h3>
+      <ul id="queueList"></ul>
+      <button id="retryBtn" class="secondary">Retry Sending</button>
+    </section>
+  </main>
+  <footer>
+    <small>© <span id="year"></span> Skeltons Chemists — Caring for the Community since 1852</small>
+  </footer>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>

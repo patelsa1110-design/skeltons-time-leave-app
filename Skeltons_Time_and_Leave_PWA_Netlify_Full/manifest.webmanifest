@@ -1,0 +1,9 @@
+{
+  "name": "Skeltons Chemists — Time & Leave",
+  "short_name": "Skeltons Time",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0b8a63",
+  "theme_color": "#0b8a63",
+  "icons": [{"src": "assets/logo.png", "sizes": "512x512", "type": "image/png"}]
+}
