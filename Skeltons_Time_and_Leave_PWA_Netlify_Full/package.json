@@ -1,8 +1,0 @@
-{
-  "name": "skeltons-time-leave-app",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "@sendgrid/mail": "^7.7.0"
-  }
-}
